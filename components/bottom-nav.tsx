@@ -1,9 +1,20 @@
-import { Calendar, ChartNoAxesColumn, House, Sparkles, User } from "lucide-react";
+import dayjs from "dayjs";
+import { ChartNoAxesColumn, House, Sparkles, User } from "lucide-react";
 import Link from "next/link";
 
+import { getHomeData } from "@/app/_lib/api/fetch-generated";
 import { Button } from "@/components/ui/button";
+import { BottomNavCalendarLink } from "@/components/bottom-nav-calendar-link";
 
-export const BottomNav = () => {
+export const BottomNav = async () => {
+  const response = await getHomeData(dayjs().format("YYYY-MM-DD"));
+  const todayWorkoutDay =
+    response.status === 200 ? response.data.todayWorkoutDay : null;
+
+  const calendarHref = todayWorkoutDay
+    ? `/workout-plans/${todayWorkoutDay.workoutPlanId}/days/${todayWorkoutDay.id}`
+    : "/";
+
   return (
     <nav className="fixed inset-x-0 bottom-4 z-50 mx-auto flex w-[calc(100%-2rem)] max-w-md items-center justify-between rounded-full border border-border/60 bg-background/80 px-6 py-3 shadow-lg shadow-foreground/5 backdrop-blur-md md:bottom-6 md:max-w-sm">
       <Button
@@ -17,13 +28,7 @@ export const BottomNav = () => {
         </Link>
       </Button>
 
-      <Button
-        variant="ghost"
-        size="icon"
-        className="text-muted-foreground transition-colors hover:text-foreground"
-      >
-        <Calendar className="size-5" />
-      </Button>
+      <BottomNavCalendarLink href={calendarHref} />
 
       <Button
         size="icon-lg"

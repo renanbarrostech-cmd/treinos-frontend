@@ -144,7 +144,7 @@ export default async function Home() {
 
             {todayWorkoutDay ? (
               <Link
-                href="#"
+                href={`/workout-plans/${todayWorkoutDay.workoutPlanId}/days/${todayWorkoutDay.id}`}
                 className="block transition-transform duration-200 hover:scale-[1.01] active:scale-[0.99]"
               >
                 <WorkoutDayCard
