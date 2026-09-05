@@ -13,8 +13,7 @@ type BottomNavCalendarLinkProps = {
 
 export const BottomNavCalendarLink = ({ href }: BottomNavCalendarLinkProps) => {
   const pathname = usePathname();
-  const isActive =
-    pathname.startsWith("/workout-plans/") && pathname.includes("/days/");
+  const isActive = pathname.startsWith("/workout-plans/");
 
   return (
     <Button
