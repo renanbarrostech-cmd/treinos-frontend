@@ -1,11 +1,12 @@
 import dayjs from "dayjs";
-import { House, Sparkles, User } from "lucide-react";
+import { House, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 import { getHomeData } from "@/app/_lib/api/fetch-generated";
 import { Button } from "@/components/ui/button";
 import { BottomNavCalendarLink } from "@/components/bottom-nav-calendar-link";
 import { BottomNavStatsLink } from "@/components/bottom-nav-stats-link";
+import { BottomNavProfileLink } from "@/components/bottom-nav-profile-link";
 
 export const BottomNav = async () => {
   const response = await getHomeData(dayjs().format("YYYY-MM-DD"));
@@ -44,13 +45,7 @@ export const BottomNav = async () => {
 
       <BottomNavStatsLink />
 
-      <Button
-        variant="ghost"
-        size="icon"
-        className="text-muted-foreground transition-colors hover:text-foreground"
-      >
-        <User className="size-5" />
-      </Button>
+      <BottomNavProfileLink />
     </nav>
   );
 };

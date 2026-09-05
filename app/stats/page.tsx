@@ -7,7 +7,7 @@ import { CircleCheck, CirclePercent, Hourglass } from "lucide-react";
 import { BottomNav } from "@/components/bottom-nav";
 import { StreakBanner } from "./_components/streak-banner";
 import { StatsHeatmap } from "./_components/stats-heatmap";
-import { StatCard } from "./_components/stat-card";
+import { StatCard } from "@/components/stat-card";
 
 function formatTotalTime(totalSeconds: number): string {
   const hours = Math.floor(totalSeconds / 3600);
