@@ -1,9 +1,7 @@
+import { LoginView } from "./_components/login-view";
+
 const AuthPage = () => {
-  return (
-    <div>
-      <h1>Auth</h1>
-    </div>
-  );
+  return <LoginView />;
 };
 
-export default AuthPage
+export default AuthPage;
